@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block body%}
+
+    <br>
+    <h2>VIDEO PLAYER</h2>
+    <h5>{{ video.title }}</h5><br>
+
+    <p> Description: {{ video.description}}</p>
+    Uploaded by:{{ video.user }}<br>
+    Upload Time:{{ video.datetime }}
+
+
+    <br>
+    <br>
+    <h6>Comments</h6><br>
+     <form action="/addComment/" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+         <input type="hidden" name="video" value="{{ video.id }}" />
+        <input class="btn btn-primary" type='submit' value='Comment'>
+    </form>
+    <h2>COMMENTS </h2>
+    {% for comment in comments %}
+        Comment: {{ comment.text }} <br>
+        Created by: {{ comment.user }} on {{ comment.datetime }}<br>
+    {% endfor %}
+
+{% endblock %}
+</body>
+</html>

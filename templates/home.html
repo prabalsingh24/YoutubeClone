@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">{% block title %}
+        <title>HOME</title>
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+    <br>
+    {% for video in videos %}
+        <br>
+        Title: {{ video.title }}<br>
+
+        Uploaded by:{{ video.user }} on {{ video.datetime }}<br>
+        Descriptino:{{ video.description }}<br>
+        <a href="/video/{{video.id}}">Watch Video</a>
+        <hr>
+        <br><br>
+
+    {% endfor %}
+{% endblock %}
+</body>
+</html>

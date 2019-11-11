@@ -1,0 +1,27 @@
+{% extends "base.html"  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+        <title>New Video</title>
+    {% endblock %}
+</head>
+<body>
+
+{% block body %}
+    <h1>Upload a video</h1>
+    <br>
+    <form enctype="multipart/form-data" action="/addVideo/" method="POST">
+        {% csrf_token %}
+        <table>
+           {{ form.as_table}}
+        </table>
+        <br>
+        <input class="btn btn-primary" type='submit' value='Upload The Video!'>
+
+    </form>
+
+{% endblock %}
+</body>
+</html>
